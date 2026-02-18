@@ -1,0 +1,1128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Murli Hotel • मुरली होटल</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body class="font-sans antialiased bg-[#F8F4EE]">
+    <!-- NAVBAR -->
+    <nav id="navbar" 
+         class="fixed top-0 left-0 right-0 bg-white shadow-sm z-50 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-5 lg:px-8">
+            <div class="flex items-center justify-between h-16 lg:h-20">
+                <!-- Logo -->
+                <div class="flex items-center gap-x-3">
+                    <i class="fa-solid fa-hotel text-[#9F2A3F] text-3xl"></i>
+                    <div>
+                        <span class="font-serif text-[#9F2A3F] text-xl tracking-[0.065em] leading-none">MURLI</span><br>
+                        <span class="text-[13px] text-[#9F2A3F] font-medium tracking-widest -mt-1 block">HOTEL</span>
+                    </div>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center gap-10 text-sm uppercase tracking-widest font-medium">
+                    <a href="#" class="text-[#9F2A3F] border-b-2 border-[#9F2A3F] pb-1">Home</a>
+                    <a href="#about" class="hover:text-[#9F2A3F] transition-colors">About</a>
+                    <a href="#rooms" class="hover:text-[#9F2A3F] transition-colors">Rooms</a>
+                    <a href="#restaurant" class="hover:text-[#9F2A3F] transition-colors">Restaurant</a>
+                    <a href="#reviews" class="hover:text-[#9F2A3F] transition-colors">Reviews</a>
+                    <a href="#gallery" class="hover:text-[#9F2A3F] transition-colors">Gallery</a>
+                    <a href="#location" class="hover:text-[#9F2A3F] transition-colors">Location</a>
+                </div>
+                
+                <div class="flex items-center gap-3">
+                    <button onclick="scrollToBook()" 
+                        id="bookBtn"
+                        class="hidden sm:block bg-[#9F2A3F] hover:bg-[#872334] text-white text-xs px-6 py-2.5 rounded-full transition-all duration-200 tracking-widest font-medium">
+                        BOOK ROOM
+                    </button>
+                    
+                    <!-- Mobile Hamburger -->
+                    <button id="mobile-toggle"
+                        class="md:hidden text-[#9F2A3F] text-2xl">
+                        <i class="fa-solid fa-bars" id="hamburger-icon"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" 
+         class="hidden md:hidden fixed top-16 left-0 right-0 bg-white shadow-xl z-40 py-6 border-t">
+        <div class="flex flex-col px-6 space-y-4 text-sm uppercase tracking-widest font-medium">
+            <a href="#" class="py-2 text-[#9F2A3F]">Home</a>
+            <a href="#about" class="py-2 hover:text-[#9F2A3F]">About Us</a>
+            <a href="#rooms" class="py-2 hover:text-[#9F2A3F]">Rooms</a>
+            <a href="#restaurant" class="py-2 hover:text-[#9F2A3F]">Restaurant</a>
+            <a href="#reviews" class="py-2 hover:text-[#9F2A3F]">Reviews</a>
+            <a href="#gallery" class="py-2 hover:text-[#9F2A3F]">Gallery</a>
+            <a href="#location" class="py-2 hover:text-[#9F2A3F]">Location</a>
+            
+            <button onclick="scrollToBook()" 
+                class="mt-4 bg-[#9F2A3F] text-white py-3 px-6 rounded-full w-full text-xs tracking-[0.065em]">
+                BOOK YOUR STAY
+            </button>
+        </div>
+    </div>
+
+    <!-- HERO -->
+    <header id="hero" 
+            class="relative h-screen flex items-center justify-center bg-black overflow-hidden">
+        
+        <!-- Background Image -->
+        <div 
+            id="hero-bg"
+            class="absolute inset-0 bg-cover bg-center transition-all duration-[1500ms]"
+            style="background-image: url('https://picsum.photos/id/870/2000/1400');">
+        </div>
+        
+        <!-- Gradient Overlay -->
+        <div class="absolute inset-0 bg-gradient-to-t from-[#451E21] via-[#451E21]/70 to-transparent"></div>
+        
+        <!-- Content -->
+        <div class="relative z-10 text-center px-6 max-w-5xl mx-auto">
+            <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm text-white text-xs tracking-[0.065em] px-5 py-2 rounded-3xl mb-4">
+                <span class="block h-px w-6 bg-amber-300"></span> NH-111, KATGHORA
+            </div>
+            
+            <h1 class="font-serif text-[6.5rem] lg:text-[7.75rem] leading-[0.8] text-white tracking-[-0.01em] mb-3">
+                मुरली<br><span class="text-[#E8C670] text-[4.75rem] lg:text-[5.75rem] block -mt-3">HOTEL</span>
+            </h1>
+            
+            <p class="text-white/90 text-base lg:text-lg tracking-widest font-medium mb-8">Comfort • Taste • Trust</p>
+            
+            <div class="flex flex-wrap justify-center gap-3">
+                <button onclick="makeCall()" 
+                    id="call-now-btn"
+                    class="bg-[#9F2A3F] hover:bg-[#7C212F] transition-colors text-white px-8 py-4 rounded-xl flex items-center gap-3 text-sm font-semibold">
+                    <i class="fa-solid fa-phone"></i> 098934 50855
+                </button>
+                
+                <button onclick="scrollToBook()" 
+                    class="bg-transparent border border-white hover:bg-white hover:text-[#9F2A3F] transition-all text-white px-7 py-4 rounded-xl text-sm font-semibold">
+                    BOOK A ROOM
+                </button>
+            </div>
+        </div>
+        
+        <!-- Scroll prompt -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center text-white/70 text-[11px] tracking-[0.065em]">
+            <span class="mb-1">SCROLL TO EXPLORE</span>
+            <i class="fa-solid fa-chevron-down animate-bounce"></i>
+        </div>
+    </header>
+
+    <!-- ABOUT -->
+    <section id="about" class="py-16 lg:py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-5 lg:px-8">
+            <!-- Intro header -->
+            <div class="flex flex-col lg:flex-row items-start lg:items-center gap-6 mb-12">
+                <div class="flex-1">
+                    <span class="inline-block text-[#E8C670] text-xs tracking-[0.065em] font-semibold mb-1">EST. 2009 • KATGHORA</span>
+                    <h2 class="font-serif text-[#2F2521] text-[3.35rem] lg:text-[4rem] leading-tight tracking-[-0.006em]">
+                        Where the highway<br>meets home.
+                    </h2>
+                </div>
+                <div class="lg:w-80">
+                    <p class="text-[#675C55] text-[15px] leading-relaxed">
+                        For 15 years, Murli Hotel has been the trusted stop for families, truckers, 
+                        and travellers on NH-111. Clean rooms, fresh food, and warm Chhattisgarhi 
+                        hospitality — all at the doorstep of Katghora’s New Bus Stand.
+                    </p>
+                    <div class="h-px bg-[#E8C670]/40 my-6"></div>
+                    <div class="flex items-center gap-6 text-xs uppercase tracking-widest text-[#9F2A3F]">
+                        <span><i class="fa-solid fa-check"></i> 24×7 Security</span>
+                        <span><i class="fa-solid fa-check"></i> Hygienic Kitchen</span>
+                        <span><i class="fa-solid fa-check"></i> Free Parking</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Values grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Value 1 -->
+                <div class="group bg-[#F8F4EE] rounded-3xl overflow-hidden hover:shadow-xl transition-all">
+                    <div class="h-2 bg-[#9F2A3F]"></div>
+                    <div class="p-8">
+                        <div class="w-11 h-11 rounded-full bg-[#E8C670]/10 flex items-center justify-center mb-6 text-[#9F2A3F]">
+                            <i class="fa-solid fa-shield-halved text-lg"></i>
+                        </div>
+                        <h4 class="font-semibold text-[#2F2521] text-xl mb-1">Cleanliness First</h4>
+                        <p class="text-sm text-[#675C55] leading-relaxed">Every room is sanitised after every checkout. We follow “Murli Saaf” — our 7-step hygiene promise.</p>
+                    </div>
+                </div>
+                
+                <!-- Value 2 -->
+                <div class="group bg-[#F8F4EE] rounded-3xl overflow-hidden hover:shadow-xl transition-all">
+                    <div class="h-2 bg-[#E8C670]"></div>
+                    <div class="p-8">
+                        <div class="w-11 h-11 rounded-full bg-[#9F2A3F]/10 flex items-center justify-center mb-6 text-[#9F2A3F]">
+                            <i class="fa-solid fa-utensils text-lg"></i>
+                        </div>
+                        <h4 class="font-semibold text-[#2F2521] text-xl mb-1">Fresh from Farm</h4>
+                        <p class="text-sm text-[#675C55] leading-relaxed">Our kitchen sources vegetables daily from local farms of Katghora and rice from nearby Korba fields.</p>
+                    </div>
+                </div>
+                
+                <!-- Value 3 -->
+                <div class="group bg-[#F8F4EE] rounded-3xl overflow-hidden hover:shadow-xl transition-all">
+                    <div class="h-2 bg-[#9F2A3F]"></div>
+                    <div class="p-8">
+                        <div class="w-11 h-11 rounded-full bg-[#E8C670]/10 flex items-center justify-center mb-6 text-[#9F2A3F]">
+                            <i class="fa-solid fa-heart text-lg"></i>
+                        </div>
+                        <h4 class="font-semibold text-[#2F2521] text-xl mb-1">Family Owned</h4>
+                        <p class="text-sm text-[#675C55] leading-relaxed">Run by the Sharma family since day one. You are never a guest — you are family at Murli.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- ROOMS -->
+    <section id="rooms" class="bg-[#2F2521] py-16 lg:py-24 text-white">
+        <div class="max-w-7xl mx-auto px-5 lg:px-8">
+            <!-- Header -->
+            <div class="flex flex-col lg:flex-row justify-between items-start lg:items-end mb-12 border-b border-white/10 pb-8">
+                <div>
+                    <span class="uppercase text-[#E8C670] text-xs tracking-[0.065em] font-semibold">Stay • Rest • Repeat</span>
+                    <h2 class="font-serif text-5xl lg:text-[4.2rem] leading-none tracking-[-0.005em] mt-1">Comfortable Rooms<br><span class="text-[#E8C670]">at Highway Prices</span></h2>
+                </div>
+                <a href="#" onclick="scrollToBook()" 
+                   class="mt-5 lg:mt-0 inline-flex items-center text-sm font-medium group">
+                    CHECK AVAILABILITY 
+                    <span class="inline-block transition-transform group-hover:translate-x-2 ml-3">→</span>
+                </a>
+            </div>
+            
+            <!-- Rooms Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="rooms-grid">
+                <!-- Populated by JS -->
+            </div>
+            
+            <!-- Extra info -->
+            <div class="mt-14 flex flex-wrap justify-center gap-x-12 gap-y-4 text-xs uppercase text-[#E8C670] tracking-widest text-center">
+                <span><i class="fa-solid fa-wifi"></i> Free Wi‑Fi</span>
+                <span><i class="fa-solid fa-car"></i> Private Parking</span>
+                <span><i class="fa-solid fa-fan"></i> AC in all rooms</span>
+                <span><i class="fa-solid fa-mug-hot"></i> Morning tea 6 am onwards</span>
+            </div>
+        </div>
+    </section>
+    
+    <!-- RESTAURANT -->
+    <section id="restaurant" class="py-16 lg:py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-5 lg:px-8">
+            <!-- Section header -->
+            <div class="text-center mb-12">
+                <span class="bg-[#F8F4EE] text-[#9F2A3F] text-xs px-6 py-1 rounded-3xl tracking-[0.065em] inline-block mb-3">Swad • Seva • Sanskaar</span>
+                <h2 class="font-serif text-[#2F2521] text-[3.75rem] leading-none tracking-tight">The Murli Kitchen</h2>
+                <p class="text-[#675C55] mt-3">North Indian • Chhattisgarhi • South Indian<br><span class="text-xs">Open 6:00 am – 11:00 pm</span></p>
+            </div>
+            
+            <!-- Hero food banner -->
+            <div class="relative h-96 lg:h-[420px] rounded-3xl overflow-hidden mb-14 shadow-xl">
+                <!-- Background -->
+                <div class="absolute inset-0 bg-[url('https://picsum.photos/id/312/1600/900')] bg-cover bg-center"></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-[#451E21]/90 via-[#451E21]/40 to-transparent"></div>
+                
+                <!-- Content overlay -->
+                <div class="absolute inset-x-0 bottom-0 p-8 lg:p-12 text-white">
+                    <div class="max-w-md">
+                        <span class="inline-flex items-center text-xs uppercase tracking-[0.065em] mb-2">
+                            <span class="h-px bg-[#E8C670] w-6 mr-3"></span>Chef’s Special Today
+                        </span>
+                        <h4 class="font-serif text-3xl lg:text-4xl leading-tight">Chhattisgarhi<br>Aalu Chokha Thali</h4>
+                        <p class="text-xs opacity-75">Served with fresh chawal, dal, baigan bharta &amp; litti</p>
+                        
+                        <button onclick="showRestaurantModal()" 
+                            id="view-menu-btn"
+                            class="mt-6 bg-[#E8C670] hover:bg-amber-400 transition-colors text-[#2F2521] text-xs font-semibold px-7 py-3 rounded-full flex items-center gap-2">
+                            FULL MENU <span class="inline-block text-xs">↗</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Signature dishes -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Dish 1 -->
+                <div class="bg-[#F8F4EE] rounded-2xl overflow-hidden group">
+                    <div class="h-44 bg-[url('https://picsum.photos/id/110/600/300')] bg-cover bg-center transition-all duration-300 group-hover:scale-105"></div>
+                    <div class="px-5 py-5">
+                        <div class="flex justify-between items-center text-[13px]">
+                            <span class="text-[#9F2A3F] font-medium">₹140</span>
+                            <span class="bg-[#9F2A3F] text-[10px] text-white px-2 py-px rounded">North Indian</span>
+                        </div>
+                        <h6 class="font-semibold text-base mt-1 leading-tight">Butter Chicken +<br>Naan Basket</h6>
+                    </div>
+                </div>
+                
+                <!-- Dish 2 -->
+                <div class="bg-[#F8F4EE] rounded-2xl overflow-hidden group">
+                    <div class="h-44 bg-[url('https://picsum.photos/id/431/600/300')] bg-cover bg-center transition-all duration-300 group-hover:scale-105"></div>
+                    <div class="px-5 py-5">
+                        <div class="flex justify-between items-center text-[13px]">
+                            <span class="text-[#9F2A3F] font-medium">₹110</span>
+                            <span class="bg-[#E8C670] text-[#2F2521] text-[10px] px-2 py-px rounded">Chhattisgarhi</span>
+                        </div>
+                        <h6 class="font-semibold text-base mt-1 leading-tight">Fara + Aam ka Achar<br>&amp; Kadhi</h6>
+                    </div>
+                </div>
+                
+                <!-- Dish 3 -->
+                <div class="bg-[#F8F4EE] rounded-2xl overflow-hidden group">
+                    <div class="h-44 bg-[url('https://picsum.photos/id/312/600/300')] bg-cover bg-center transition-all duration-300 group-hover:scale-105"></div>
+                    <div class="px-5 py-5">
+                        <div class="flex justify-between items-center text-[13px]">
+                            <span class="text-[#9F2A3F] font-medium">₹95</span>
+                            <span class="bg-[#9F2A3F] text-[10px] text-white px-2 py-px rounded">South Indian</span>
+                        </div>
+                        <h6 class="font-semibold text-base mt-1 leading-tight">Masala Dosa +<br>Coconut Chutney</h6>
+                    </div>
+                </div>
+                
+                <!-- Dish 4 -->
+                <div class="bg-[#2F2521] text-white rounded-2xl overflow-hidden flex flex-col justify-center items-center text-center p-6 h-full min-h-[176px]">
+                    <i class="fa-solid fa-bowl-food text-[#E8C670] text-4xl mb-3"></i>
+                    <span class="uppercase text-xs tracking-[0.065em] leading-relaxed">+ 27 more<br>items freshly<br>cooked daily</span>
+                    <button onclick="showRestaurantModal()" 
+                        class="mt-5 text-[#E8C670] text-xs underline underline-offset-4">See full menu →</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- REVIEWS -->
+    <section id="reviews" class="bg-[#F8F4EE] py-16 lg:py-20">
+        <div class="max-w-7xl mx-auto px-5 lg:px-8">
+            <!-- Google rating banner -->
+            <div class="bg-white rounded-3xl py-7 px-6 lg:px-9 mb-12 shadow-sm flex flex-col lg:flex-row items-center justify-between gap-4">
+                <div class="flex items-center gap-4">
+                    <i class="fa-brands fa-google text-[#4285F4] text-4xl"></i>
+                    <div>
+                        <div class="flex items-center text-[#F4B400] text-xl">
+                            ★★★★<span class="text-[#C5C5C5]">☆</span>
+                        </div>
+                        <p class="font-mono text-xs text-[#675C55] tracking-widest">3.8 • 1,255 Google reviews</p>
+                    </div>
+                </div>
+                <div class="text-[#9F2A3F] text-sm font-medium border border-[#9F2A3F]/30 px-5 py-1 rounded-full">
+                    “Best highway hotel between Raipur &amp; Bilaspur” — 412 travellers
+                </div>
+            </div>
+            
+            <!-- Testimonials -->
+            <div class="mb-6 flex items-center justify-between">
+                <h2 class="font-serif text-[#2F2521] text-[3.5rem] leading-none tracking-[-0.01em]">Guests who<br>felt at home</h2>
+                <div class="hidden sm:flex items-center gap-3">
+                    <button id="review-prev"
+                        class="w-9 h-9 flex items-center justify-center border border-[#D4B27C] rounded-full hover:bg-[#E8C670] hover:text-[#2F2521] transition-colors">
+                        ←
+                    </button>
+                    <button id="review-next"
+                        class="w-9 h-9 flex items-center justify-center bg-[#9F2A3F] text-white rounded-full hover:bg-[#872334]">
+                        →
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Review Carousel -->
+            <div id="review-carousel" class="overflow-hidden">
+                <!-- JS populated -->
+            </div>
+            
+            <!-- Trust bar -->
+            <div class="mt-16 pt-7 border-t border-[#D4B27C]/30 grid grid-cols-2 md:grid-cols-4 gap-y-6 text-center text-xs uppercase font-medium text-[#675C55]">
+                <div>
+                    <span class="block text-[#9F2A3F] text-xl font-serif">4,820</span><span class="tracking-widest">Nights stayed</span>
+                </div>
+                <div>
+                    <span class="block text-[#9F2A3F] text-xl font-serif">93<span class="text-xs align-super">%</span></span><span class="tracking-widest">Repeat guests</span>
+                </div>
+                <div>
+                    <span class="block text-[#9F2A3F] text-xl font-serif">142</span><span class="tracking-widest">Families welcomed<br>this month</span>
+                </div>
+                <div>
+                    <span class="block text-[#9F2A3F] text-xl font-serif">24</span><span class="tracking-widest">Hours of<br>non-stop service</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- GALLERY -->
+    <section id="gallery" class="py-16 lg:py-20 bg-[#2F2521]">
+        <div class="max-w-7xl mx-auto px-5 lg:px-8">
+            <!-- Header -->
+            <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-10">
+                <div>
+                    <span class="uppercase text-[#E8C670] text-xs tracking-[0.065em]">Memories captured at Murli</span>
+                    <h2 class="font-serif text-white text-[3.75rem] leading-none">Gallery</h2>
+                </div>
+                <button onclick="toggleLightbox()" id="view-all-gallery-btn"
+                    class="mt-3 sm:mt-0 text-[#E8C670] text-sm flex items-center gap-2 hover:underline">
+                    VIEW ALL 48 PHOTOS <i class="fa-solid fa-arrow-right-long-right text-xs"></i>
+                </button>
+            </div>
+            
+            <!-- Gallery Grid -->
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 lg:gap-4" id="gallery-grid">
+                <!-- JS populated -->
+            </div>
+        </div>
+    </section>
+    
+    <!-- LOCATION -->
+    <section id="location" class="bg-white py-16 lg:py-20">
+        <div class="max-w-7xl mx-auto px-5 lg:px-8">
+            <!-- Heading -->
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                <!-- Left column -->
+                <div class="lg:col-span-5">
+                    <span class="inline-block bg-[#9F2A3F] text-white text-xs tracking-[0.065em] px-7 py-2 rounded-3xl mb-4">NH-111 • Katghora</span>
+                    
+                    <h2 class="font-serif text-[#2F2521] text-[3.8rem] leading-tight tracking-[-0.006em]">Just 180 metres<br>from the New<br>Bus Stand</h2>
+                    
+                    <div class="bg-[#F8F4EE] rounded-2xl p-6 mt-10">
+                        <div class="flex items-start gap-4">
+                            <i class="fa-solid fa-location-dot text-[#9F2A3F] mt-px text-lg"></i>
+                            <div>
+                                <p class="uppercase text-xs font-medium tracking-widest">Murli Hotel</p>
+                                <p class="text-[#675C55] text-sm">New Bus Stand,<br>National Highway 111,<br>Katghora, Chhattisgarh 495445</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex flex-wrap gap-3 mt-7">
+                        <button onclick="openGoogleMaps()" 
+                            id="google-maps-btn"
+                            class="bg-[#9F2A3F] hover:bg-[#872334] transition-colors text-white text-sm px-7 py-3 rounded-xl flex-1 sm:flex-none flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-map"></i> Open in Maps
+                        </button>
+                        
+                        <button onclick="makeCall()" 
+                            class="border border-[#9F2A3F] hover:bg-[#9F2A3F] hover:text-white transition-all text-[#9F2A3F] text-sm px-6 py-3 rounded-xl flex-1 sm:flex-none">
+                            Call 098934 50855
+                        </button>
+                    </div>
+                    
+                    <p class="text-xs text-[#A38F77] mt-8">Average travel time from Raipur Airport: 3 hrs 40 mins<br>
+                    <span class="font-medium">Free pick-up for groups of 6+ from bus stand</span></p>
+                </div>
+                
+                <!-- Map column -->
+                <div class="lg:col-span-7 relative">
+                    <!-- Fake map container -->
+                    <div class="relative rounded-3xl overflow-hidden shadow-xl bg-[#EDE6DC] aspect-video lg:aspect-[5/3]">
+                        <!-- Static map image simulation -->
+                        <img id="static-map" 
+                             src="https://picsum.photos/id/1015/800/420" 
+                             alt="Location Map"
+                             class="w-full h-full object-cover grayscale-[0.15]">
+                        
+                        <!-- Map overlay elements -->
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+                        
+                        <!-- Pin -->
+                        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+                            <div class="relative">
+                                <!-- Pin shadow -->
+                                <div class="absolute top-4 left-1/2 -translate-x-1/2 w-6 h-2 bg-black/30 blur-sm rounded-full"></div>
+                                <!-- Pin -->
+                                <i class="fa-solid fa-location-dot text-[#9F2A3F] text-[3.75rem] drop-shadow-[0_4px_3px_rgb(0,0,0,0.3)]"></i>
+                            </div>
+                        </div>
+                        
+                        <!-- Info label -->
+                        <div class="absolute bottom-5 left-5 bg-white shadow text-xs py-1 px-3 rounded-lg flex items-center gap-2">
+                            <span class="inline-block h-px bg-[#9F2A3F] w-4"></span> 
+                            You are here
+                        </div>
+                        
+                        <!-- Distance badge -->
+                        <div class="absolute top-5 right-5 bg-[#E8C670] text-[#2F2521] text-[11px] font-semibold px-4 py-1 rounded-full shadow-sm">
+                            180 m to bus stand
+                        </div>
+                    </div>
+                    
+                    <div class="bg-[#2F2521] text-[#E8C670] text-xs flex justify-between items-center py-3 px-5 mt-4 rounded-2xl text-center lg:text-left">
+                        <span class="font-medium">NH-111 (Bilaspur Road)</span>
+                        <span class="hidden lg:inline-block h-px bg-[#E8C670]/30 w-12"></span>
+                        <span class="uppercase text-[10px] tracking-widest">24×7 Open Gate</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- CONTACT -->
+    <section class="bg-[#9F2A3F] py-14 text-white">
+        <div class="max-w-4xl mx-auto px-5 text-center">
+            <i class="block text-[#E8C670] text-[3.8rem] mb-2">☎️</i>
+            <p class="uppercase text-xs tracking-[0.065em] mb-1">Speak to our front desk directly</p>
+            <a href="tel:09893450855" id="big-phone"
+               class="block font-mono text-5xl lg:text-[4.25rem] leading-none hover:underline transition-all">09893 450 855</a>
+            
+            <div class="h-px bg-white/30 my-8 lg:my-9"></div>
+            
+            <!-- Contact Form -->
+            <div class="bg-white/5 backdrop-blur-sm rounded-3xl p-6 lg:p-8">
+                <p class="uppercase text-xs font-medium tracking-[0.065em] mb-6">Or leave a message — we reply within 20 mins</p>
+                
+                <form id="contact-form" class="grid grid-cols-1 md:grid-cols-2 gap-x-5 gap-y-4">
+                    <input type="text" id="name" placeholder="Your name" 
+                        class="bg-transparent border border-white/40 rounded-xl py-3 px-4 text-sm placeholder:text-white/50 focus:outline-none" required>
+                    
+                    <input type="tel" id="contact-phone" placeholder="Phone number" 
+                        class="bg-transparent border border-white/40 rounded-xl py-3 px-4 text-sm placeholder:text-white/50 focus:outline-none" required>
+                    
+                    <textarea id="message" rows="1" placeholder="When are you reaching Katghora?" 
+                        class="md:col-span-2 bg-transparent border border-white/40 rounded-xl py-3 px-4 text-sm placeholder:text-white/50 focus:outline-none resize-none"></textarea>
+                    
+                    <button type="submit"
+                        id="form-submit-btn"
+                        class="md:col-span-2 bg-[#E8C670] hover:bg-amber-300 transition-colors text-[#2F2521] font-semibold py-4 rounded-2xl mt-2 text-sm tracking-widest">
+                        SEND MESSAGE
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+    
+    <!-- FOOTER -->
+    <footer class="bg-[#2F2521] text-[#C4B9A8]">
+        <div class="max-w-7xl mx-auto px-5 lg:px-8 pt-16 pb-8">
+            <!-- Top footer -->
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-y-12">
+                <!-- Brand column -->
+                <div class="md:col-span-5">
+                    <div class="flex items-center gap-x-3 mb-4">
+                        <i class="fa-solid fa-hotel text-[#E8C670] text-4xl"></i>
+                        <span class="font-serif text-[#E8C670] text-[2.35rem] tracking-[-0.01em] leading-none">MURLI<br><span class="text-xs font-sans tracking-[0.065em] text-[#C4B9A8] -mt-1 block">होटल</span></span>
+                    </div>
+                    <p class="text-xs leading-relaxed max-w-xs">Serving highway travellers,<br>bus passengers &amp; local families<br>with love since 2009.</p>
+                    
+                    <div class="mt-8 flex gap-5">
+                        <i class="fa-brands fa-square-instagram text-lg"></i>
+                        <i class="fa-brands fa-whatsapp text-lg"></i>
+                        <i class="fa-brands fa-facebook-f text-base"></i>
+                    </div>
+                </div>
+                
+                <!-- Quick links -->
+                <div class="md:col-span-2">
+                    <p class="uppercase text-[#E8C670] text-xs font-medium tracking-[0.065em] mb-5">Quick Links</p>
+                    <ul class="space-y-3 text-sm">
+                        <li><a href="#rooms" class="hover:text-[#E8C670] transition-colors">Rooms &amp; Suites</a></li>
+                        <li><a href="#restaurant" class="hover:text-[#E8C670] transition-colors">Murli Restaurant</a></li>
+                        <li><a href="#gallery" class="hover:text-[#E8C670] transition-colors">Memories</a></li>
+                        <li><a href="#location" class="hover:text-[#E8C670] transition-colors">Reach Us</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Contact info -->
+                <div class="md:col-span-3">
+                    <p class="uppercase text-[#E8C670] text-xs font-medium tracking-[0.065em] mb-5">Contact &amp; Timing</p>
+                    
+                    <div class="space-y-6 text-sm">
+                        <div>
+                            <span class="block text-[11px] text-[#998F7F]">Reception &amp; Booking</span>
+                            <a href="tel:09893450855" class="font-mono hover:text-[#E8C670] transition-colors">09893 450 855</a>
+                        </div>
+                        
+                        <div>
+                            <span class="block text-[11px] text-[#998F7F]">Restaurant Timings</span>
+                            <span class="block">6:00 am — 11:00 pm</span>
+                        </div>
+                        
+                        <div>
+                            <span class="block text-[11px] text-[#998F7F]">Check-in / Check-out</span>
+                            <span class="block">12:00 noon / 11:00 am</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Address -->
+                <div class="md:col-span-2">
+                    <p class="uppercase text-[#E8C670] text-xs font-medium tracking-[0.065em] mb-4">Address</p>
+                    <address class="text-xs leading-relaxed not-italic">
+                        New Bus Stand,<br>NH-111,<br>Katghora,<br>Chhattisgarh 495445
+                    </address>
+                    
+                    <button onclick="openGoogleMaps()" 
+                        class="mt-7 text-[#E8C670] text-xs flex items-center gap-2 hover:text-amber-300 transition-colors text-left">
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i> Get exact directions
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Bottom line -->
+            <div class="pt-12 mt-12 border-t border-[#463932] text-[11px] flex flex-wrap justify-between items-center text-[#998F7F]">
+                <span>© Murli Hotel 2009–2025. A family business.</span>
+                <span class="mt-3 sm:mt-0">“Aapka swagat hai” — always.</span>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Room Booking Modal -->
+    <div id="bookingModal" class="hidden fixed inset-0 bg-black/60 flex items-center justify-center z-[999]">
+        <div onclick="event.stopImmediatePropagation()" 
+             id="bookingModalContent"
+             class="bg-white rounded-3xl max-w-md w-full mx-5 overflow-hidden">
+            
+            <!-- Content populated by JS -->
+            
+        </div>
+    </div>
+    
+    <!-- Restaurant Modal -->
+    <div id="restaurantModal" class="hidden fixed inset-0 bg-black/70 z-[1000] flex items-center justify-center">
+        <div class="bg-white rounded-3xl max-w-lg w-full mx-4 overflow-hidden">
+            <!-- Header -->
+            <div class="bg-[#2F2521] px-6 py-4 flex items-center justify-between text-white">
+                <span class="uppercase tracking-[0.065em] text-xs">Murli Restaurant Menu</span>
+                <button onclick="hideRestaurantModal()" class="text-xl leading-none">✕</button>
+            </div>
+            
+            <!-- Menu tabs -->
+            <div class="flex border-b">
+                <button data-tab="thali" id="tab-thali" onclick="switchMenuTab('thali')" class="tab-btn flex-1 py-4 text-sm font-semibold border-b-2 border-[#9F2A3F] text-[#9F2A3F]">Thali Specials</button>
+                <button data-tab="main" id="tab-main" onclick="switchMenuTab('main')" class="tab-btn flex-1 py-4 text-sm font-medium">Main Course</button>
+                <button data-tab="breakfast" id="tab-breakfast" onclick="switchMenuTab('breakfast')" class="tab-btn flex-1 py-4 text-sm font-medium">Breakfast</button>
+            </div>
+            
+            <!-- Menu content -->
+            <div id="menu-content" class="max-h-[340px] overflow-auto text-sm">
+                <!-- JS populated -->
+            </div>
+            
+            <div class="px-5 py-4 text-[11px] text-[#998F7F] border-t flex items-center justify-center gap-2">
+                <i class="fa-solid fa-utensils"></i> All dishes prepared fresh to order
+            </div>
+        </div>
+    </div>
+    
+    <!-- Gallery Lightbox -->
+    <div id="lightbox" class="hidden fixed inset-0 bg-black/95 z-[1100] flex items-center justify-center">
+        <div class="relative max-w-5xl w-full px-4">
+            <!-- Close -->
+            <button onclick="toggleLightbox()" id="lightbox-close"
+                class="absolute -top-12 right-4 text-white text-4xl z-10">✕</button>
+            
+            <!-- Image container -->
+            <div class="relative bg-black rounded-2xl overflow-hidden shadow-2xl" style="aspect-ratio: 16 / 9;">
+                <img id="lightbox-image" 
+                     src="https://picsum.photos/id/870/1200/675"
+                     alt="Gallery photo"
+                     class="w-full h-full object-contain">
+            </div>
+            
+            <!-- Caption -->
+            <div class="text-center text-white/70 text-xs tracking-widest mt-4" id="lightbox-caption">
+                Reception lobby – 7:30 am
+            </div>
+            
+            <!-- Navigation -->
+            <button id="lightbox-prev" 
+                class="absolute left-4 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/70 text-white h-11 w-11 flex items-center justify-center rounded-full">‹</button>
+            <button id="lightbox-next" 
+                class="absolute right-4 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/70 text-white h-11 w-11 flex items-center justify-center rounded-full">›</button>
+        </div>
+    </div>
+    
+    <script>
+        // Tailwind script already injected via CDN
+        
+        // Sample room data
+        const rooms = [
+            {
+                id: 1,
+                title: "Deluxe Double",
+                price: "1699",
+                size: "240 sq.ft",
+                img: "https://picsum.photos/id/870/600/380",
+                amenities: ["AC", "WiFi", "TV", "King Bed"],
+                persons: "2 Adults"
+            },
+            {
+                id: 2,
+                title: "Executive Suite",
+                price: "2399",
+                size: "380 sq.ft",
+                img: "https://picsum.photos/id/312/600/380",
+                amenities: ["AC", "WiFi", "TV", "Sofa", "Bathtub"],
+                persons: "2 Adults + 1 Child"
+            },
+            {
+                id: 3,
+                title: "Family Triple",
+                price: "1999",
+                size: "270 sq.ft",
+                img: "https://picsum.photos/id/106/600/380",
+                amenities: ["AC", "WiFi", "TV", "3 Beds"],
+                persons: "3 Adults"
+            }
+        ];
+        
+        // Sample testimonials
+        const testimonials = [
+            {
+                name: "Sanjay Yadav",
+                role: "Business traveller, Bilaspur",
+                date: "12 days ago",
+                rating: 4,
+                text: "Stopped here at 11 pm on way back from Raipur. Extremely clean room, hot water, and the restaurant staff served me a full thali even after 11. Felt truly welcomed.",
+                avatar: "https://picsum.photos/id/64/32/32"
+            },
+            {
+                name: "Meena Patel & Family",
+                role: "From Indore",
+                date: "3 weeks ago",
+                rating: 5,
+                text: "We stayed for two nights while visiting our relatives in Katghora. The kids loved the courtyard and the morning tea served in steel glasses. Very safe and peaceful.",
+                avatar: "https://picsum.photos/id/871/32/32"
+            }
+        ];
+        
+        // Sample gallery images
+        let galleryImages = [
+            { url: "https://picsum.photos/id/870/600/420", caption: "Front view at sunrise" },
+            { url: "https://picsum.photos/id/312/600/420", caption: "Deluxe Double Room" },
+            { url: "https://picsum.photos/id/431/600/420", caption: "Murli Restaurant – Thali counter" },
+            { url: "https://picsum.photos/id/106/600/420", caption: "Reception &amp; Waiting lounge" }
+        ];
+        
+        let currentLightboxIndex = 0;
+        
+        // Fake restaurant menu data
+        let currentTab = "thali";
+        const menuData = {
+            thali: [
+                { name: "Chhattisgarhi Veg Thali", price: "₹160", desc: "Rice, dal, 3 sabzi, papad, chutney, dahi" },
+                { name: "Special Litti Chokha Thali", price: "₹185", desc: "Litti, chokha, kadhi, rice, salad" },
+                { name: "Chicken Thali", price: "₹210", desc: "Butter chicken, naan, rice, dal fry" }
+            ],
+            main: [
+                { name: "Paneer Lababdar", price: "₹210", desc: "" },
+                { name: "Mutton Rogan Josh", price: "₹320", desc: "" },
+                { name: "Prawn Malai Curry", price: "₹280", desc: "" }
+            ],
+            breakfast: [
+                { name: "Poha + Jalebi", price: "₹70", desc: "" },
+                { name: "Aloo Paratha + Curd", price: "₹85", desc: "" },
+                { name: "Idli-Vada + Filter Coffee", price: "₹95", desc: "" }
+            ]
+        };
+        
+        // Render rooms
+        function renderRooms() {
+            let html = '';
+            
+            rooms.forEach(room => {
+                html += `
+                    <div class="bg-[#40342F] rounded-3xl overflow-hidden group">
+                        <!-- Image -->
+                        <div class="relative h-56 overflow-hidden">
+                            <img src="${room.img}" 
+                                 alt="${room.title}" 
+                                 class="w-full h-full object-cover transition-all duration-500 group-hover:scale-110">
+                            
+                            <div class="absolute top-3 right-3 bg-[#E8C670] text-[#2F2521] text-xs font-semibold px-3 py-px rounded-full">
+                                ₹${room.price}
+                            </div>
+                        </div>
+                        
+                        <!-- Details -->
+                        <div class="px-6 py-6">
+                            <div class="flex items-center justify-between mb-1">
+                                <span class="uppercase text-[#E8C670] tracking-[0.065em] text-xs">${room.size}</span>
+                                <span class="text-xs text-[#A38F77]">${room.persons}</span>
+                            </div>
+                            
+                            <h5 class="font-serif text-white text-[1.38rem] leading-tight">${room.title}</h5>
+                            
+                            <!-- Amenities -->
+                            <div class="flex flex-wrap gap-2 my-5">
+                                ${room.amenities.map(am => `
+                                    <span class="bg-[#51443F] text-[#E8C670] text-[10px] px-3 py-px rounded-full">${am}</span>
+                                `).join("")}
+                            </div>
+                            
+                            <button onclick="bookRoom(${room.id})" 
+                                class="bg-[#E8C670] hover:bg-amber-300 transition-colors w-full py-3 text-[#2F2521] font-semibold text-xs tracking-widest rounded-2xl">
+                                BOOK FOR TONIGHT
+                            </button>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            document.getElementById("rooms-grid").innerHTML = html;
+        }
+        
+        // Render gallery grid
+        function renderGallery() {
+            let html = ``;
+            
+            galleryImages.forEach((image, index) => {
+                html += `
+                    <div onclick="openLightbox(${index})" 
+                         class="relative aspect-square overflow-hidden rounded-2xl cursor-pointer group">
+                        <img src="${image.url}" alt="${image.caption}" 
+                             class="absolute inset-0 w-full h-full object-cover transition-all duration-300 group-hover:scale-110">
+                        
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-all flex items-end pb-3 px-3">
+                            <span class="text-[10px] text-white/90 leading-tight">${image.caption}</span>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            // Add two more static items to complete the 4-column grid
+            html += `
+                <div onclick="openLightbox(0)" class="relative aspect-square overflow-hidden rounded-2xl cursor-pointer bg-[#463932] flex items-center justify-center">
+                    <div class="text-center">
+                        <i class="fa-solid fa-camera text-[#E8C670] text-xl block mb-px"></i><span class="text-[#E8C670] text-[11px] tracking-widest">+32 photos</span>
+                    </div>
+                </div>
+            `;
+            
+            document.getElementById("gallery-grid").innerHTML = html;
+        }
+        
+        // Book room modal
+        function bookRoom(id) {
+            const room = rooms.find(r => r.id === id);
+            if (!room) return;
+            
+            let html = `
+                <div class="relative">
+                    <img src="${room.img}" class="w-full h-44 object-cover" alt="${room.title}">
+                    <button onclick="closeBookingModal()" id="modal-close-btn"
+                        class="absolute top-3 right-3 text-white bg-black/40 h-7 w-7 rounded-full flex items-center justify-center text-xs">✕</button>
+                </div>
+                
+                <div class="px-6 py-7">
+                    <h3 class="font-serif text-[#2F2521] text-2xl">${room.title}</h3>
+                    <div class="flex items-center justify-between text-xs text-[#675C55]">
+                        <span>₹${room.price} <span class="text-[10px]">per night</span></span>
+                        <span class="bg-green-100 text-green-700 px-2 py-px rounded">Available • 4 rooms left</span>
+                    </div>
+                    
+                    <div class="my-7 border-y border-dashed py-6 text-xs">
+                        <div class="grid grid-cols-3 gap-3 text-center text-[#675C55]">
+                            <div>Check-in<br><span class="font-mono block text-sm text-[#2F2521] font-medium">12 Jun</span></div>
+                            <div>Check-out<br><span class="font-mono block text-sm text-[#2F2521] font-medium">13 Jun</span></div>
+                            <div>Guests<br><span class="font-mono block text-sm text-[#2F2521] font-medium">2</span></div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-[#F8F4EE] rounded-xl p-4 mb-6 text-xs">
+                        <div class="flex items-center justify-between mb-2 text-[#9F2A3F]">
+                            <span>Total (incl. taxes)</span>
+                            <span class="font-semibold">₹2,049</span>
+                        </div>
+                        <div class="h-px bg-[#D4B27C]/40"></div>
+                        <div class="text-[#998F7F] text-[10px] mt-2">Inclusive of breakfast for 2 people</div>
+                    </div>
+                    
+                    <button onclick="fakeBookingConfirm()" id="confirm-booking-btn"
+                        class="bg-[#9F2A3F] hover:bg-[#872334] w-full py-4 rounded-2xl text-white text-sm font-semibold tracking-widest transition-colors">
+                        CONFIRM &amp; PAY VIA PHONE
+                    </button>
+                    
+                    <p class="text-[10px] text-center text-[#998F7F] mt-5">No advance payment required.<br>We’ll confirm instantly on call.</p>
+                </div>
+            `;
+            
+            document.getElementById("bookingModalContent").innerHTML = html;
+            document.getElementById("bookingModal").classList.remove("hidden");
+        }
+        
+        function closeBookingModal() {
+            document.getElementById("bookingModal").classList.add("hidden");
+        }
+        
+        function fakeBookingConfirm() {
+            const btn = document.getElementById("confirm-booking-btn");
+            const originalText = btn.textContent;
+            
+            btn.style.pointerEvents = "none";
+            btn.innerHTML = `<span class="inline-flex items-center"><i class="fa-solid fa-check mr-2"></i>Booking confirmed!</span>`;
+            btn.classList.remove("bg-[#9F2A3F]", "hover:bg-[#872334]");
+            btn.classList.add("bg-emerald-500");
+            
+            setTimeout(() => {
+                alert("Thank you! Your booking request #MH-8742 has been received.\n\nMr. Ramesh will call you shortly on 09893 450 855 to confirm.");
+                closeBookingModal();
+                
+                // Reset button state
+                btn.innerHTML = originalText;
+                btn.classList.add("bg-[#9F2A3F]", "hover:bg-[#872334]");
+                btn.classList.remove("bg-emerald-500");
+                btn.style.pointerEvents = "all";
+            }, 1150);
+        }
+        
+        // Review carousel
+        let currentReviewIndex = 0;
+        
+        function renderReviews() {
+            let html = `
+                <div class="relative">
+                    <!-- Active review -->
+                    <div id="active-review" class="bg-white rounded-3xl px-7 py-8 shadow-sm transition-all">
+                        <!-- JS injected here on init -->
+                    </div>
+                </div>
+            `;
+            
+            document.getElementById("review-carousel").innerHTML = html;
+            updateActiveReview();
+        }
+        
+        function updateActiveReview() {
+            const review = testimonials[currentReviewIndex];
+            let starsHTML = '';
+            
+            for (let i = 1; i <= 5; i++) {
+                starsHTML += `<span class="${i <= review.rating ? 'text-[#E8C670]' : 'text-gray-300'}">★</span>`;
+            }
+            
+            document.getElementById("active-review").innerHTML = `
+                <div class="flex items-center gap-3 mb-4">
+                    <img src="${review.avatar}" alt="${review.name}" 
+                         class="w-8 h-8 rounded-full object-cover ring-1 ring-[#E8C670]">
+                    <div>
+                        <span class="block text-sm font-semibold leading-none">${review.name}</span>
+                        <span class="text-xs text-[#998F7F]">${review.role}</span>
+                    </div>
+                </div>
+                
+                <div class="flex mb-3">${starsHTML}</div>
+                
+                <p class="text-[#675C55] text-[15px] leading-relaxed">“${review.text}”</p>
+                
+                <span class="block text-right text-[#C5B39C] text-xs mt-6">${review.date}</span>
+            `;
+        }
+        
+        function changeReview(n) {
+            currentReviewIndex = (currentReviewIndex + n + testimonials.length) % testimonials.length;
+            updateActiveReview();
+        }
+        
+        // Lightbox controls
+        function openLightbox(index) {
+            currentLightboxIndex = index;
+            updateLightboxImage();
+            document.getElementById("lightbox").classList.remove("hidden");
+            document.body.style.overflow = "hidden";
+        }
+        
+        function updateLightboxImage() {
+            const item = galleryImages[currentLightboxIndex % galleryImages.length];
+            document.getElementById("lightbox-image").src = item.url;
+            document.getElementById("lightbox-caption").innerHTML = item.caption;
+        }
+        
+        function toggleLightbox() {
+            const lightbox = document.getElementById("lightbox");
+            lightbox.classList.toggle("hidden");
+            document.body.style.overflow = lightbox.classList.contains("hidden") ? "" : "hidden";
+        }
+        
+        function changeLightboxImage(n) {
+            currentLightboxIndex += n;
+            updateLightboxImage();
+        }
+        
+        // Restaurant modal functions
+        function showRestaurantModal() {
+            document.getElementById("restaurantModal").classList.remove("hidden");
+            renderMenuContent("thali");
+        }
+        
+        function hideRestaurantModal() {
+            document.getElementById("restaurantModal").classList.add("hidden");
+        }
+        
+        function switchMenuTab(tab) {
+            currentTab = tab;
+            
+            document.querySelectorAll(".tab-btn").forEach(btn => {
+                if (btn.getAttribute("data-tab") === tab) {
+                    btn.classList.add("border-b-2", "border-[#9F2A3F]", "text-[#9F2A3F]", "font-semibold");
+                } else {
+                    btn.classList.remove("border-b-2", "border-[#9F2A3F]", "text-[#9F2A3F]", "font-semibold");
+                }
+            });
+            
+            renderMenuContent(tab);
+        }
+        
+        function renderMenuContent(tab) {
+            let html = `<div class="divide-y">`;
+            
+            menuData[tab].forEach(item => {
+                html += `
+                    <div class="px-6 py-[17px] flex justify-between items-start">
+                        <div>
+                            <span class="font-medium">${item.name}</span>
+                            ${item.desc ? `<span class="block text-xs text-[#998F7F] mt-px">${item.desc}</span>` : ''}
+                        </div>
+                        <span class="font-mono text-[#9F2A3F] whitespace-nowrap">${item.price}</span>
+                    </div>
+                `;
+            });
+            
+            html += `</div>`;
+            
+            document.getElementById("menu-content").innerHTML = html;
+        }
+        
+        // Scroll helper
+        function scrollToBook() {
+            document.getElementById("rooms").scrollIntoView({
+                behavior:'smooth'
+            });
+        }
+        
+        function makeCall() {
+            window.location.href = "tel:09893450855";
+        }
+        
+        function openGoogleMaps() {
+            window.open("https://maps.app.goo.gl/fakeMurliHotelKatghora", "_blank");
+        }
+        
+        // Fake contact form handler
+        function initContactForm() {
+            document.getElementById("contact-form").addEventListener("submit", function(e) {
+                e.preventDefault();
+                
+                const btn = document.getElementById("form-submit-btn");
+                const originalHTML = btn.innerHTML;
+                
+                btn.style.width = btn.offsetWidth + "px";
+                btn.innerHTML = `<span class="inline-block animate-spin h-3 w-3 border-2 border-white border-r-transparent rounded-full mr-2"></span>Sending...`;
+                
+                setTimeout(() => {
+                    btn.classList.remove("bg-[#E8C670]", "text-[#2F2521]");
+                    btn.classList.add("bg-emerald-500", "text-white");
+                    btn.innerHTML = `<i class="fa-solid fa-check mr-2"></i>Message sent successfully`;
+                    
+                    setTimeout(() => {
+                        alert("Namaste! We received your message.\n\nOur manager will contact you shortly at the number provided.");
+                        document.getElementById("contact-form").reset();
+                        
+                        // revert button
+                        btn.classList.remove("bg-emerald-500", "text-white");
+                        btn.classList.add("bg-[#E8C670]", "text-[#2F2521]");
+                        btn.innerHTML = originalHTML;
+                    }, 450);
+                }, 980);
+            });
+        }
+        
+        // Initialize everything
+        window.onload = () => {
+            // Render dynamic content
+            renderRooms();
+            renderGallery();
+            renderReviews();
+            
+            // Mobile menu toggle
+            const mobileToggle = document.getElementById("mobile-toggle");
+            const mobileMenu = document.getElementById("mobile-menu");
+            const hamburgerIcon = document.getElementById("hamburger-icon");
+            
+            mobileToggle.addEventListener("click", () => {
+                mobileMenu.classList.toggle("hidden");
+                
+                if (!mobileMenu.classList.contains("hidden")) {
+                    hamburgerIcon.classList.remove("fa-bars");
+                    hamburgerIcon.classList.add("fa-xmark");
+                } else {
+                    hamburgerIcon.classList.add("fa-bars");
+                    hamburgerIcon.classList.remove("fa-xmark");
+                }
+            });
+            
+            // Review carousel controls
+            document.getElementById("review-prev").addEventListener("click", () => {
+                changeReview(-1);
+            });
+            
+            document.getElementById("review-next").addEventListener("click", () => {
+                changeReview(1);
+            });
+            
+            // Lightbox listeners
+            document.getElementById("lightbox-prev").addEventListener("click", () => {
+                changeLightboxImage(-1);
+            });
+            
+            document.getElementById("lightbox-next").addEventListener("click", () => {
+                changeLightboxImage(1);
+            });
+            
+            // Close modals when clicking backdrop
+            document.getElementById("bookingModal").addEventListener("click", function(e){
+                if (e.target === this) {
+                    this.classList.add("hidden");
+                }
+            });
+            
+            document.getElementById("restaurantModal").addEventListener("click", function(e){
+                if (e.target === this) {
+                    this.classList.add("hidden");
+                }
+            });
+            
+            // Keyboard support for lightbox
+            document.addEventListener("keydown", function(e){
+                const lightboxEl = document.getElementById("lightbox");
+                if (!lightboxEl.classList.contains("hidden")) {
+                    if (e.key === "ArrowRight") {
+                        e.preventDefault();
+                        changeLightboxImage(1);
+                    }
+                    if (e.key === "ArrowLeft") {
+                        e.preventDefault();
+                        changeLightboxImage(-1);
+                    }
+                    if (e.key === "Escape") {
+                        toggleLightbox();
+                    }
+                }
+            });
+            
+            // Navbar scroll effect
+            window.addEventListener("scroll", () => {
+                const navbar = document.getElementById("navbar");
+                if (window.scrollY > 80) {
+                    navbar.classList.add("shadow-md");
+                } else {
+                    navbar.classList.remove("shadow-md");
+                }
+            });
+            
+            initContactForm();
+            
+            // Add a few more gallery items for realism
+            galleryImages.push(
+                { url: "https://picsum.photos/id/292/600/420", caption: "Chhattisgarhi folk art at entrance" },
+                { url: "https://picsum.photos/id/156/600/420", caption: "Family enjoying breakfast in courtyard" }
+            );
+            
+            console.log("%cNamaste! Welcome to Murli Hotel website.\nBuilt as a single-file demonstration.", 
+                "color:#9F2A3F;font-weight:500");
+        }
+    </script>
+</body>
+</html>
